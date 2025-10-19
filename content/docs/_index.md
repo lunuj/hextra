@@ -27,5 +27,5 @@ title: 简介
 立即开始探索：
 
 {{< cards >}}
-  {{< card link="演示页面" title="快速开始" icon="document-text" subtitle="学习如何使用 Hextra 创建网站" >}}
+  {{< card link="近期计划" title="快速开始" icon="document-text" subtitle="阅读相关学习文档" >}}
 {{< /cards >}}
