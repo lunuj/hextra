@@ -2,6 +2,8 @@
 title: "博客"
 cascade:
   type: blog
+  params:
+    reversePagination: false
 ---
 
 <div style="text-align: center; margin-top: 1em;">
