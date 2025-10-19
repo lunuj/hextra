@@ -43,9 +43,9 @@ menu:
     - identifier: 分类
       weight: 4
       name: 日期分类
-    - identifier: 2025Q3
-      name: 2025Q3
-      pageRef: /tags/2025Q3
+    - identifier: 2025@3
+      name: 2025@3
+      pageRef: /tags/2025@3
       parent: 分类
     - identifier: proj
       name: 项目介绍
