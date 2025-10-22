@@ -5,7 +5,7 @@ authors:
   - name: lunuj
     link: https://github.com/lunuj
 tags:
-  - 2025@3
+  - 2025
   - 开发环境
 ---
 在 **Windows** 下，搭建开发环境是一个比较复杂的问题，而 **Scoop** 可以统一开发环境，并安装常见的开发软件。
