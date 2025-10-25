@@ -246,7 +246,7 @@ static int setup_lcd(void)
 	enable_lcdif_clock(LCDIF1_BASE_ADDR, 1);
 
 	imx_iomux_v3_setup_multiple_pads(lcd_pads, ARRAY_SIZE(lcd_pads));
-#if 0 // 整点原子的开发板中屏幕不需要复位
+#if 0 // 正点原子的开发板中屏幕不需要复位
 	/* Reset the LCD */
 	gpio_request(IMX_GPIO_NR(5, 9), "lcd reset");
 	gpio_direction_output(IMX_GPIO_NR(5, 9) , 0);
@@ -565,8 +565,8 @@ int board_phy_config(struct phy_device *phydev)
 	return 0;
 }
 ```
-函数配置了 0x1f 寄存器，在 **NXP** 使用的 KSZ8081 芯片肯能是配置页寄存器的（具体需要看新芯片数据手册）。
-但是在 LAN8720A 中这个寄存器中 PHY 状态控制寄存器，其中11:5 为要求写入固定值，如果写入其他数值，**PHY** 芯片可能工作异常。
+函数配置了 0x1f 寄存器，在 **NXP** 使用的 **KSZ8081** 芯片可能是配置页寄存器的（具体需要看芯片数据手册）。
+但是在 **LAN8720A** 中这个寄存器中 **PHY** 状态控制寄存器，其中 11:5 位要求写入固定值，如果写入其他数值，**PHY** 芯片可能工作异常。
 这个寄存器也不需要额外去配置，默认值就是要求写入的固定值，只是不能在 `board_phy_config` 函数中写入其他值，直接删去整个函数即可，驱动会去调用 drivers/net/phy/phy.c 中的版本。
 ```c
 __weak int board_phy_config(struct phy_device *phydev)
@@ -628,7 +628,7 @@ fi
 ./build.sh -c
 ```
 ### 烧录 uboot
-**NXP** 提供的烧录方式还是有很多，可以通过 **OTG** 烧录，也可以通过 **SD** 卡启动。**OTG** 烧录可以使用 **NXP** 提供的工具，直接烧写到内部存储，但是过于复杂。
+**NXP** 提供的烧录方式有很多，可以通过 **OTG** 烧录，也可以通过 **SD** 卡启动。**OTG** 烧录可以使用 **NXP** 提供的工具，直接烧写到内部存储。
 这里选择 **NXP** 提供的 imx_usb_loader 工具，imx_usb_loader 工具会将文件直接写入 ddr 中，而不是内部存储，对于测试比较方便，缺点是掉电会丢失，但也可以通过 **uboot** 手动写入对应的内置存储设备中。
 从[imx_usb_loader 官方仓库](https://github.com/boundarydevices/imx_usb_loader.git)下载下来，从 README 中可以看到具体的使用方法，这里使用windows 下 MinGW 方式编译:
 ```shell
@@ -691,6 +691,7 @@ saveenv
 - linux 内核镜像。
 - linux 设备树。
 - rootfs 跟文件系统。
+
 这里先使用正点原子提供的文件用于测试，步骤相对简单：
 使用 tftp 下载内核镜像和设备树到内存：
 ```shell
