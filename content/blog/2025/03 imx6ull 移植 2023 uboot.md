@@ -1,7 +1,7 @@
 ---
-title: windows下安装scoop
+title: imx6ull 移植 2023 uboot
 date: 2025-10-23
-authors:  
+authors:
   - name: lunuj
     link: https://github.com/lunuj
 tags:
