@@ -1,5 +1,5 @@
 ---
-title: Linux GPIO 系统
+title: Linux pinctrl 子系统 1 软件框架
 date: 2026-02-19
 authors:
   - name: lunuj

@@ -1,5 +1,5 @@
 ---
-title: Linux GPIO 系统
+title: Linux pinctrl 子系统 3 pinctrl 系统框架
 date: 2026-02-19
 authors:
   - name: lunuj
@@ -7,7 +7,7 @@ authors:
 tags:
   - 2025
   - Linux
-  -  pinctrl
+  - pinctrl
 ---
 **Linux** 内核 **pinctrl** 系统驱动框架。
 <!--more-->  
